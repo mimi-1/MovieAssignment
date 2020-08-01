@@ -1,0 +1,329 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://services.moviesoapservice.movie.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="MovieService" targetNamespace="http://services.moviesoapservice.movie.com/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://services.moviesoapservice.movie.com/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://services.moviesoapservice.movie.com/">
+  <xs:element name="deleteMovie" type="tns:deleteMovie"/>
+  <xs:element name="deleteMovieResponse" type="tns:deleteMovieResponse"/>
+  <xs:element name="download" type="tns:download"/>
+  <xs:element name="downloadResponse" type="tns:downloadResponse"/>
+  <xs:element name="getMovie" type="tns:getMovie"/>
+  <xs:element name="getMovieList" type="tns:getMovieList"/>
+  <xs:element name="getMovieListResponse" type="tns:getMovieListResponse"/>
+  <xs:element name="getMovieResponse" type="tns:getMovieResponse"/>
+  <xs:element name="hello" type="tns:hello"/>
+  <xs:element name="helloResponse" type="tns:helloResponse"/>
+  <xs:element name="movies" type="tns:movies"/>
+  <xs:element name="updateMovie" type="tns:updateMovie"/>
+  <xs:element name="updateMovieResponse" type="tns:updateMovieResponse"/>
+  <xs:element name="upload" type="tns:upload"/>
+  <xs:element name="uploadResponse" type="tns:uploadResponse"/>
+  <xs:complexType name="getMovieList">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getMovieListResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:movies"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="movies">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dateRelease" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="dateUpload" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="movieContent" type="xs:base64Binary"/>
+      <xs:element minOccurs="0" name="movieFilename" type="xs:string"/>
+      <xs:element minOccurs="0" name="movieId" type="xs:integer"/>
+      <xs:element minOccurs="0" name="movieName" type="xs:string"/>
+      <xs:element minOccurs="0" name="movieSeries" type="xs:string"/>
+      <xs:element minOccurs="0" name="movieType" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getMovie">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:integer"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getMovieResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:movies"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="hello">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="helloResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="updateMovie">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:integer"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="type" type="xs:string"/>
+      <xs:element minOccurs="0" name="series" type="xs:string"/>
+      <xs:element minOccurs="0" name="release" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="filename" type="xs:string"/>
+      <xs:element minOccurs="0" name="content" type="xs:base64Binary"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="updateMovieResponse">
+    <xs:sequence>
+      <xs:element name="length" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="upload">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="type" type="xs:string"/>
+      <xs:element minOccurs="0" name="series" type="xs:string"/>
+      <xs:element minOccurs="0" name="release" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="filename" type="xs:string"/>
+      <xs:element minOccurs="0" name="content" type="xs:base64Binary"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="uploadResponse">
+    <xs:sequence>
+      <xs:element name="length" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteMovie">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:integer"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteMovieResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="download">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:integer"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="downloadResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:base64Binary"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Exception" type="tns:Exception"/>
+  <xs:complexType name="Exception">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="IllegalOrphanException" type="tns:IllegalOrphanException"/>
+  <xs:complexType name="IllegalOrphanException">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="messages" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NonexistentEntityException" type="tns:NonexistentEntityException"/>
+  <xs:complexType name="NonexistentEntityException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="hello">
+    <wsdl:part element="tns:hello" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateMovie">
+    <wsdl:part element="tns:updateMovie" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMovieListResponse">
+    <wsdl:part element="tns:getMovieListResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="helloResponse">
+    <wsdl:part element="tns:helloResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="downloadResponse">
+    <wsdl:part element="tns:downloadResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMovieResponse">
+    <wsdl:part element="tns:getMovieResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="download">
+    <wsdl:part element="tns:download" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Exception">
+    <wsdl:part element="tns:Exception" name="Exception">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteMovieResponse">
+    <wsdl:part element="tns:deleteMovieResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="uploadResponse">
+    <wsdl:part element="tns:uploadResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="NonexistentEntityException">
+    <wsdl:part element="tns:NonexistentEntityException" name="NonexistentEntityException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMovieList">
+    <wsdl:part element="tns:getMovieList" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMovie">
+    <wsdl:part element="tns:getMovie" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="upload">
+    <wsdl:part element="tns:upload" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteMovie">
+    <wsdl:part element="tns:deleteMovie" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateMovieResponse">
+    <wsdl:part element="tns:updateMovieResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IllegalOrphanException">
+    <wsdl:part element="tns:IllegalOrphanException" name="IllegalOrphanException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="MovieService">
+    <wsdl:operation name="getMovieList">
+      <wsdl:input message="tns:getMovieList" name="getMovieList">
+    </wsdl:input>
+      <wsdl:output message="tns:getMovieListResponse" name="getMovieListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMovie">
+      <wsdl:input message="tns:getMovie" name="getMovie">
+    </wsdl:input>
+      <wsdl:output message="tns:getMovieResponse" name="getMovieResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="hello">
+      <wsdl:input message="tns:hello" name="hello">
+    </wsdl:input>
+      <wsdl:output message="tns:helloResponse" name="helloResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateMovie">
+      <wsdl:input message="tns:updateMovie" name="updateMovie">
+    </wsdl:input>
+      <wsdl:output message="tns:updateMovieResponse" name="updateMovieResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="upload">
+      <wsdl:input message="tns:upload" name="upload">
+    </wsdl:input>
+      <wsdl:output message="tns:uploadResponse" name="uploadResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteMovie">
+      <wsdl:input message="tns:deleteMovie" name="deleteMovie">
+    </wsdl:input>
+      <wsdl:output message="tns:deleteMovieResponse" name="deleteMovieResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:IllegalOrphanException" name="IllegalOrphanException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:NonexistentEntityException" name="NonexistentEntityException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="download">
+      <wsdl:input message="tns:download" name="download">
+    </wsdl:input>
+      <wsdl:output message="tns:downloadResponse" name="downloadResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MovieServiceSoapBinding" type="tns:MovieService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getMovieList">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getMovieList">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getMovieListResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMovie">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getMovie">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getMovieResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="hello">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="hello">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="helloResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateMovie">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateMovie">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateMovieResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="upload">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="upload">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="uploadResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteMovie">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deleteMovie">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteMovieResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="IllegalOrphanException">
+        <soap:fault name="IllegalOrphanException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NonexistentEntityException">
+        <soap:fault name="NonexistentEntityException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="download">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="download">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="downloadResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MovieService">
+    <wsdl:port binding="tns:MovieServiceSoapBinding" name="MovieServicePort">
+      <soap:address location="http://secure-eyrie-37089.herokuapp.com/MovieService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
